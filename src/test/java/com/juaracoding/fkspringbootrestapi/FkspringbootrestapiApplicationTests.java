@@ -10,4 +10,9 @@ class FkspringbootrestapiApplicationTests {
 	void contextLoads() {
 	}
 
+	@Test
+	void getDoang() {
+
+	}
+
 }
