@@ -53,10 +53,6 @@ public class FormatDataController {
             @RequestParam(value = "umur") Integer intUmur,
             @RequestParam(value = "nilai") Double douNilai
     ) {
-        System.out.println(strNama);
-        System.out.println(intUmur);
-        System.out.println(douNilai);
-
         if (douNilai > 80 && intUmur >= 18 && intUmur <= 60) {
             return strNama + " Lolos Seleksi";
         } else {
