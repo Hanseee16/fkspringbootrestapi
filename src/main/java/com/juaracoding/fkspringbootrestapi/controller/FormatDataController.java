@@ -11,9 +11,14 @@ Version 1.0
 
 import com.juaracoding.fkspringbootrestapi.model.CalonPeserta;
 import com.juaracoding.fkspringbootrestapi.model.FormatData;
+import com.juaracoding.fkspringbootrestapi.util.FileUtility;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.swing.text.Style;
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -37,7 +42,6 @@ public class FormatDataController {
 
     @PostMapping("/v1/seleksi")
     public String seleksiCalonPeserta(@RequestBody List<CalonPeserta> calonPeserta) {
-
         for (int i = 0; i < calonPeserta.size(); i++) {
             System.out.println("Nama i ke "+i+" : "+calonPeserta.get(i).getNama());
             System.out.println("Umur i ke "+i+" : "+calonPeserta.get(i).getUmur());
@@ -53,10 +57,41 @@ public class FormatDataController {
             @RequestParam(value = "umur") Integer intUmur,
             @RequestParam(value = "nilai") Double douNilai
     ) {
+        System.out.println(strNama);
+        System.out.println(intUmur);
+        System.out.println(douNilai);
+
         if (douNilai > 80 && intUmur >= 18 && intUmur <= 60) {
             return strNama + " Lolos Seleksi";
         } else {
             return strNama + " Tidak lolos seleksi";
         }
     }
+
+    @PostMapping("/v1/seleksi3/{nama}/{umur}/{nilai}")
+    public String seleksiCalonPeserta3(
+            @PathVariable(value = "nama") String nama,
+            @PathVariable(value = "umur") Integer umur,
+            @PathVariable(value = "nilai") Double nilai
+    ) {
+        System.out.println(nama);
+        System.out.println(umur);
+        System.out.println(nilai);
+
+        if (nilai > 80 && umur >= 18 && umur <= 60) {
+            return nama + " Lolos Seleksi";
+        } else {
+            return nama + " Tidak lolos seleksi";
+        }
+    }
+
+    // upload file
+    @PostMapping("/kirim-file")
+    public String submitFile(@RequestParam(value = "kiriman") MultipartFile file) throws IOException {
+        String fileName = StringUtils.cleanPath(file.getOriginalFilename());
+        String uploadDir = "user-files/";
+        FileUtility.saveFile(uploadDir, fileName, file);
+        return "Berhasil mengunggah file " + fileName;
+    }
+
 }
