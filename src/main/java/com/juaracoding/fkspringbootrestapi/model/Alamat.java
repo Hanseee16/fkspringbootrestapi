@@ -9,7 +9,27 @@ Created on 02/12/2023 18:40
 Version 1.0
 */
 
+import org.hibernate.validator.constraints.Length;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import java.time.LocalDate;
+import java.util.Date;
+
 public class Alamat {
+
+    @NotNull
+    @NotEmpty
+    @NotBlank
+    @DateTimeFormat(pattern = "dd-MM-yyyy")
+    @Length(min = 10, max = 20)
+    @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[*.!@#$%^&(){}:;<>,.?/~_+-=|]).{8,16}$", message = "Tidak valid!")
+
+    private LocalDate contohTanggal; // yyyy-MM-dd
+    private Date contohTanggalWaktu; // yyyy-MM-dd HH:mm:ss.SSS
     private String jalan;
     private Integer nomor;
     private String kota;
