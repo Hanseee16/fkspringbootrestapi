@@ -21,6 +21,13 @@ import java.util.Date;
 
 public class Alamat {
 
+    /*
+        Ketentuan:
+        * Diawali huruf kapital
+        * Sisanya huruf kecil dan nomor saja (kombinasi)
+        * Min 8 karakter Max 16 karakter
+     */
+
     @NotNull
     @NotEmpty
     @NotBlank
