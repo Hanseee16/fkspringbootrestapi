@@ -1,0 +1,15 @@
+package com.juaracoding.fkspringbootrestapi.constant;
+/*
+IntelliJ IDEA 2022.3.1 (Community Edition)
+Build #IC-223.8214.52, built on December 20, 2022
+@Author Hanseee a.k.a. Farhan Kamil
+Java Developer
+Created on 06/12/2023 18:19
+@Last Modified 06/12/2023 18:19
+Version 1.0
+*/
+
+public class ConstantClassPeserta {
+
+    public  static final String COL_DEF_NAMA = "CHAR(20) comments 'Ini buat Field Nama di Tabel Peserta'";
+}

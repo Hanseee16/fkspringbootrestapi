@@ -9,17 +9,26 @@ Created on 03/12/2023 23:45
 Version 1.0
 */
 
+import com.juaracoding.fkspringbootrestapi.constant.ConstantClassPeserta;
+
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Peserta")
+@Table(name = "MstPeserta")
 
 public class Peserta {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
     private Integer id;
+
+    @Column(name = "NamaPeserta", columnDefinition = ConstantClassPeserta.COL_DEF_NAMA)
     private String nama;
+
+    @Column(name = "Batch", columnDefinition = ConstantClassPeserta.COL_DEF_BACTH)
     private String batch;
+
+    @Column(name = "AlamatPeserta", columnDefinition = ConstantClassPeserta.COL_DEF_NAMA)
     private String alamat;
 
     public Integer getId() {
