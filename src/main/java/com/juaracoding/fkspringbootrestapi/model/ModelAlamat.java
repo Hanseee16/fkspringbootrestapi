@@ -12,6 +12,7 @@ Version 1.0
 import org.hibernate.validator.constraints.Length;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -19,14 +20,15 @@ import javax.validation.constraints.Pattern;
 import java.time.LocalDate;
 import java.util.Date;
 
+@Entity
+@Table(name = "MstAlamat")
+
 public class ModelAlamat {
 
-    /*
-        Ketentuan:
-        * Diawali huruf kapital
-        * Sisanya huruf kecil dan nomor saja (kombinasi)
-        * Min 8 karakter Max 16 karakter
-     */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
+    private Long id;
 
     @NotNull
     @NotEmpty
@@ -41,6 +43,30 @@ public class ModelAlamat {
     private Integer nomor;
     private String kota;
     private Integer kodePos;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public LocalDate getContohTanggal() {
+        return contohTanggal;
+    }
+
+    public void setContohTanggal(LocalDate contohTanggal) {
+        this.contohTanggal = contohTanggal;
+    }
+
+    public Date getContohTanggalWaktu() {
+        return contohTanggalWaktu;
+    }
+
+    public void setContohTanggalWaktu(Date contohTanggalWaktu) {
+        this.contohTanggalWaktu = contohTanggalWaktu;
+    }
 
     public String getJalan() {
         return jalan;

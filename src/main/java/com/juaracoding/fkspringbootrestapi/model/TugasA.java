@@ -12,6 +12,7 @@ Version 1.0
 
 import com.juaracoding.fkspringbootrestapi.constant.ConstantClassTugasA;
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -20,37 +21,37 @@ import java.util.Date;
 public class TugasA {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "IDTugasA", nullable = true)
+    @Column(name = "IDTugasA")
     private Integer id;
 
-    @Column(name = "Nama", columnDefinition = ConstantClassTugasA.COL_DEF_Nama)
+    @Column(name = "Nama", columnDefinition = ConstantClassTugasA.COL_DEF_Nama, nullable = false)
     private String nama;
 
-    @Column(name = "ModelAlamat", columnDefinition = ConstantClassTugasA.COL_DEF_Alamat)
+    @Column(name = "ModelAlamat", columnDefinition = ConstantClassTugasA.COL_DEF_Alamat, nullable = false)
     private String alamat;
 
-    @Column(name = "TanggalLahir", columnDefinition = ConstantClassTugasA.COL_DEF_TanggalLahir)
-    private Date tanggalLahir;
+    @Column(name = "TanggalLahir", nullable = false)
+    private LocalDate tanggalLahir;
 
-    @Column(name = "JenisKelamin")
+    @Column(name = "JenisKelamin", nullable = false)
     private Character jenisKelamin;
 
-    @Column(name = "MasihHidup")
+    @Column(name = "MasihHidup", nullable = false)
     private Boolean masihHidup;
 
-    @Column(name = "CreatedDate")
+    @Column(name = "CreatedDate", nullable = false)
     private Date createdDate;
 
-    @Column(name = "CreatedBy")
+    @Column(name = "CreatedBy", nullable = false)
     private Integer createdBy;
 
-    @Column(name = "ModifiedDate", nullable = false)
+    @Column(name = "ModifiedDate")
     private Date modifiedDate;
 
-    @Column(name = "ModifiedBy", nullable = false)
+    @Column(name = "ModifiedBy")
     private Integer modifiedBy;
 
-    @Column(name = "IsDelete")
+    @Column(name = "IsDelete", nullable = false)
     private Short isDelete;
 
     public Integer getId() {
@@ -77,11 +78,11 @@ public class TugasA {
         this.alamat = alamat;
     }
 
-    public Date getTanggalLahir() {
+    public LocalDate getTanggalLahir() {
         return tanggalLahir;
     }
 
-    public void setTanggalLahir(Date tanggalLahir) {
+    public void setTanggalLahir(LocalDate tanggalLahir) {
         this.tanggalLahir = tanggalLahir;
     }
 

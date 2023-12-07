@@ -13,5 +13,4 @@ Version 1.0
 public class ConstantClassTugasA {
     public  static final String COL_DEF_Nama = "VARCHAR(40)";
     public  static final String COL_DEF_Alamat = "VARCHAR(500)";
-    public  static final String COL_DEF_TanggalLahir = "DATE";
 }
