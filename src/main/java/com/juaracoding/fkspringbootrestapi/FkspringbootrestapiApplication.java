@@ -8,6 +8,5 @@ public class FkspringbootrestapiApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(FkspringbootrestapiApplication.class, args);
-
 	}
 }

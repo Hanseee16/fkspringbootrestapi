@@ -20,7 +20,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/main")
 
-public class CobaController {
+public class ControllerCoba {
 
     @GetMapping("/v1/welcome")
     public String welcome() {
