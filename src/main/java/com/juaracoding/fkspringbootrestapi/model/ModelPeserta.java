@@ -13,6 +13,7 @@ import com.juaracoding.fkspringbootrestapi.constant.ConstantClassPeserta;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "MstPeserta")
@@ -33,12 +34,11 @@ public class ModelPeserta {
     @Column(name = "AlamatPeserta", columnDefinition = ConstantClassPeserta.COL_DEF_NAMA)
     private String alamat;
 
-    private  Boolean booleanValid;
-    private Double doubleValid;
-    private Short shortValid;
-    private Byte byteValid;
-    private Float floatValid;
-    private Character characterValid;
+    private Long createdBy;
+    private Date createdDate;
+    private Long modifiedBy;
+    private Date modifiedDate;
+    private Byte isActive;
 
     public Long getId() {
         return id;
@@ -72,52 +72,44 @@ public class ModelPeserta {
         this.alamat = alamat;
     }
 
-    public Boolean getBooleanValid() {
-        return booleanValid;
+    public Long getCreatedBy() {
+        return createdBy;
     }
 
-    public void setBooleanValid(Boolean booleanValid) {
-        this.booleanValid = booleanValid;
+    public void setCreatedBy(Long createdBy) {
+        this.createdBy = createdBy;
     }
 
-    public Double getDoubleValid() {
-        return doubleValid;
+    public Date getCreatedDate() {
+        return createdDate;
     }
 
-    public void setDoubleValid(Double doubleValid) {
-        this.doubleValid = doubleValid;
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
     }
 
-    public Short getShortValid() {
-        return shortValid;
+    public Long getModifiedBy() {
+        return modifiedBy;
     }
 
-    public void setShortValid(Short shortValid) {
-        this.shortValid = shortValid;
+    public void setModifiedBy(Long modifiedBy) {
+        this.modifiedBy = modifiedBy;
     }
 
-    public Byte getByteValid() {
-        return byteValid;
+    public Date getModifiedDate() {
+        return modifiedDate;
     }
 
-    public void setByteValid(Byte byteValid) {
-        this.byteValid = byteValid;
+    public void setModifiedDate(Date modifiedDate) {
+        this.modifiedDate = modifiedDate;
     }
 
-    public Float getFloatValid() {
-        return floatValid;
+    public Byte getIsActive() {
+        return isActive;
     }
 
-    public void setFloatValid(Float floatValid) {
-        this.floatValid = floatValid;
-    }
-
-    public Character getCharacterValid() {
-        return characterValid;
-    }
-
-    public void setCharacterValid(Character characterValid) {
-        this.characterValid = characterValid;
+    public void setIsActive(Byte isActive) {
+        this.isActive = isActive;
     }
 }
 

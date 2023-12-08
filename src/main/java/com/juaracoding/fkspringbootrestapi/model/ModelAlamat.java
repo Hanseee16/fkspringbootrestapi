@@ -37,9 +37,13 @@ public class ModelAlamat {
     @Length(min = 10, max = 20)
     @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[*.!@#$%^&(){}:;<>,.?/~_+-=|]).{8,16}$", message = "Tidak valid!")
 
-    private LocalDate contohTanggal; // yyyy-MM-dd
-    private Date contohTanggalWaktu; // yyyy-MM-dd HH:mm:ss.SSS
+    @Column(name = "", unique = false, insertable = false, updatable = true)
     private String jalan;
+
+    @DateTimeFormat(pattern = "dd-MM-yyyy")
+    private LocalDate contohTanggal;
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss.SSS")
+    private Date contohTanggalWaktu;
     private Integer nomor;
     private String kota;
     private Integer kodePos;
