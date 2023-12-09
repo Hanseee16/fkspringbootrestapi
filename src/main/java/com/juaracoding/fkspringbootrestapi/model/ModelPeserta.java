@@ -34,12 +34,6 @@ public class ModelPeserta {
     @Column(name = "AlamatPeserta", columnDefinition = ConstantClassPeserta.COL_DEF_NAMA)
     private String alamat;
 
-    private Long createdBy;
-    private Date createdDate;
-    private Long modifiedBy;
-    private Date modifiedDate;
-    private Byte isActive;
-
     public Long getId() {
         return id;
     }
@@ -70,46 +64,6 @@ public class ModelPeserta {
 
     public void setAlamat(String alamat) {
         this.alamat = alamat;
-    }
-
-    public Long getCreatedBy() {
-        return createdBy;
-    }
-
-    public void setCreatedBy(Long createdBy) {
-        this.createdBy = createdBy;
-    }
-
-    public Date getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(Date createdDate) {
-        this.createdDate = createdDate;
-    }
-
-    public Long getModifiedBy() {
-        return modifiedBy;
-    }
-
-    public void setModifiedBy(Long modifiedBy) {
-        this.modifiedBy = modifiedBy;
-    }
-
-    public Date getModifiedDate() {
-        return modifiedDate;
-    }
-
-    public void setModifiedDate(Date modifiedDate) {
-        this.modifiedDate = modifiedDate;
-    }
-
-    public Byte getIsActive() {
-        return isActive;
-    }
-
-    public void setIsActive(Byte isActive) {
-        this.isActive = isActive;
     }
 }
 

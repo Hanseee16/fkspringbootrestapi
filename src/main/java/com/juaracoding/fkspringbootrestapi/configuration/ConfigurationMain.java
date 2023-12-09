@@ -9,5 +9,15 @@ Created on 08/12/2023 17:17
 Version 1.0
 */
 
+import com.juaracoding.fkspringbootrestapi.CobaCoba;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
 public class ConfigurationMain {
+
+    @Bean
+    public CobaCoba cobaCoba() {
+        return new CobaCoba();
+    }
 }

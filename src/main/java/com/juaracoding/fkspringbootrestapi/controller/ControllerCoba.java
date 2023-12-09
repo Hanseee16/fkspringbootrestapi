@@ -54,12 +54,10 @@ public class ControllerCoba {
 
     @GetMapping("/v1/contohdata")
     public Map<String, Object> contohData() {
-
         Map<String, Object> map = new HashMap<>();
         map.put("nama", "Farhan Kamil");
         map.put("jenis_kelamin", "Pria");
         map.put("status", HttpStatus.CREATED.value());
-
         return map;
     }
 }

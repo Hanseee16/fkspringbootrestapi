@@ -18,7 +18,7 @@ import java.util.Date;
 @Entity
 @Table(name = "MstTugasA")
 
-public class TugasA {
+public class ModelTugasA {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "IDTugasA")
