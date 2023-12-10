@@ -12,5 +12,22 @@ Version 1.0
 import com.juaracoding.fkspringbootrestapi.model.ModelPeserta;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import javax.transaction.Transactional;
+import java.util.List;
+
+@Transactional
+
 public interface RepoPeserta extends JpaRepository<ModelPeserta, Long> {
+    // FIND
+    List<ModelPeserta> findByNama(String nama);
+    List<ModelPeserta> findByNamaAndBatch(String nama, String batch);
+
+    // COUNT
+    Integer countByBatch(String batch);
+
+    // DELETE
+    void deleteByNama(String nama);
+
+    // DISTINCT
+    List<ModelPeserta> findDistinctPesertaByBatch(String batch);
 }

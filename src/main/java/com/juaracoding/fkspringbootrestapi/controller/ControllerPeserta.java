@@ -41,6 +41,8 @@ public class ControllerPeserta {
 
     @GetMapping("/v1/searchById")
     public Object searchPesertaById(@RequestParam(value = "id") Long id) {
+
+        // optional = mengembalikan hanya satu data
         Optional<ModelPeserta> hasil = repoPeserta.findById(id);
 
         if (hasil.isEmpty()) {
@@ -49,5 +51,43 @@ public class ControllerPeserta {
 
         ModelPeserta p = hasil.get();
         return p;
+    }
+
+    @GetMapping("/v1/searchByNama")
+    public Object searchPesertaByNama(@RequestParam(value = "nama") String nama) {
+
+        // list = mengembalikan beberapa data
+        List<ModelPeserta> hasil = repoPeserta.findByNama(nama);
+
+        if (hasil.isEmpty()) {
+            return "Data Tidak Ada!";
+        }
+        return hasil;
+    }
+
+    @GetMapping("/v1/searchByNamaAndBatch")
+    public Object searchPesertaByNamaAndBacth(
+            @RequestParam(value = "nama") String nama,
+            @RequestParam(value = "batch") String batch) {
+
+        // list = mengembalikan beberapa data
+        List<ModelPeserta> hasil = repoPeserta.findByNamaAndBatch(nama, batch);
+
+        if (hasil.isEmpty()) {
+            return "Data Tidak Ada!";
+        }
+
+        // COUNT
+        System.out.println("COUNT = "+ repoPeserta.countByBatch(batch));
+
+        // DELETE
+        System.out.println("PROSES DELETE AWAL");
+        repoPeserta.deleteByNama(nama);
+        System.out.println("PROSES DELETE AKHIR");
+
+        // DISTINCT
+        List<ModelPeserta> modelPesertaList = repoPeserta.findDistinctPesertaByBatch(batch);
+
+        return hasil;
     }
 }
