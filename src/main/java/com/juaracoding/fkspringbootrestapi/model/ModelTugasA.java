@@ -20,14 +20,14 @@ import java.util.Date;
 
 public class ModelTugasA {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "IDTugasA")
-    private Integer id;
+    private String id;
 
-    @Column(name = "Nama", columnDefinition = ConstantClassTugasA.COL_DEF_Nama, nullable = false)
+    @Column(name = "Nama", columnDefinition = ConstantClassTugasA.COL_DEF_NAMA, nullable = false)
     private String nama;
 
-    @Column(name = "ModelAlamat", columnDefinition = ConstantClassTugasA.COL_DEF_Alamat, nullable = false)
+    @Column(name = "ModelAlamat", columnDefinition = ConstantClassTugasA.COL_DEF_ALAMAT, nullable = false)
     private String alamat;
 
     @Column(name = "TanggalLahir", nullable = false)
@@ -54,11 +54,11 @@ public class ModelTugasA {
     @Column(name = "IsDelete", nullable = false)
     private Short isDelete;
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 

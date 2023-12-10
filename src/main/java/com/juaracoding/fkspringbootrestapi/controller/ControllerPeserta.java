@@ -12,20 +12,28 @@ Version 1.0
 import com.juaracoding.fkspringbootrestapi.CobaCoba;
 import com.juaracoding.fkspringbootrestapi.model.ModelPeserta;
 import com.juaracoding.fkspringbootrestapi.repo.RepoPeserta;
-import org.bouncycastle.math.raw.Mod;
+import com.juaracoding.fkspringbootrestapi.service.ServicePeserta;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/peserta")
 public class ControllerPeserta {
+
+    ServicePeserta servicePeserta;
+
+    @Autowired
+    public ControllerPeserta(ServicePeserta servicePeserta, RepoPeserta repoPeserta) {
+        this.servicePeserta = servicePeserta;
+        this.repoPeserta = repoPeserta;
+    }
+
     @Autowired
     RepoPeserta repoPeserta;
-    @Autowired
-    CobaCoba cobaCoba;
 
     @GetMapping("/v1/getAll")
     public List<ModelPeserta> getAllData() {
@@ -81,13 +89,32 @@ public class ControllerPeserta {
         System.out.println("COUNT = "+ repoPeserta.countByBatch(batch));
 
         // DELETE
-        System.out.println("PROSES DELETE AWAL");
-        repoPeserta.deleteByNama(nama);
-        System.out.println("PROSES DELETE AKHIR");
+//        System.out.println("PROSES DELETE AWAL");
+//        repoPeserta.deleteByNama(nama);
+//        System.out.println("PROSES DELETE AKHIR");
 
         // DISTINCT
         List<ModelPeserta> modelPesertaList = repoPeserta.findDistinctPesertaByBatch(batch);
 
         return hasil;
+    }
+
+    @PostMapping("/v1/validasi")
+    public String testValidasi(@Valid @RequestBody ModelPeserta modelPeserta) {
+
+        try {
+            int intX = 1/0;
+        } catch (Exception e) {
+            return "Gagal" + e.getMessage();
+        }
+
+        System.out.println("TAHAN DISINI");
+        return modelPeserta.getNama() + " berhasil ditambahkan";
+    }
+
+    @PostMapping("/v1/update/{id}")
+    public String updateData(@Valid @RequestBody ModelPeserta modelPeserta, @PathVariable(value = "id") Long id) {
+        System.out.println("Masuk Kesini!");
+        return (String) servicePeserta.updateData(id, modelPeserta);
     }
 }

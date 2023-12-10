@@ -9,7 +9,7 @@ Created on 08/12/2023 17:17
 Version 1.0
 */
 
-import com.juaracoding.fkspringbootrestapi.CobaCoba;
+import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -17,7 +17,8 @@ import org.springframework.context.annotation.Configuration;
 public class ConfigurationMain {
 
     @Bean
-    public CobaCoba cobaCoba() {
-        return new CobaCoba();
+    public ModelMapper modelMapper() {
+
+        return new ModelMapper();
     }
 }

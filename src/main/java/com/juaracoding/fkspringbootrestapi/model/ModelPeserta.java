@@ -11,8 +11,15 @@ Version 1.0
 
 import com.juaracoding.fkspringbootrestapi.constant.ConstantClassPeserta;
 import org.hibernate.validator.constraints.Length;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.Date;
 
 @Entity
@@ -24,7 +31,12 @@ public class ModelPeserta {
     @Column(name = "ID")
     private Long id;
 
-    @Column(name = "NamaPeserta", columnDefinition = ConstantClassPeserta.COL_DEF_NAMA)
+    @Column(name = "NamaPeserta", nullable = false, columnDefinition = ConstantClassPeserta.COL_DEF_NAMA)
+    @NotNull(message = "TIDAK BOLEH NULL")
+    @NotEmpty(message = "TIDAK BOLEH KOSONG")
+    @NotBlank(message = "TIDAK BOLEH BLANK")
+//    @Pattern(regexp = "^[a-zA-Z0-9]{10,20}$]",
+//            message = "TIDAK BOLEH MENGANDUNG SPESIAL KARAKTER MINIMAL 10 MAXSIMAL 20 KARAKTER")
     @Length(min = 10, max = 20)
     private String nama;
 
@@ -33,6 +45,13 @@ public class ModelPeserta {
 
     @Column(name = "AlamatPeserta", columnDefinition = ConstantClassPeserta.COL_DEF_NAMA)
     private String alamat;
+
+    @NotNull(message = "TIDAK BOLEH NULL")
+//    @DateTimeFormat(pattern = "dd-MM-yyyy")
+    private LocalDate tanggalLahir;
+
+    @Transient
+    private Integer umur;
 
     public Long getId() {
         return id;
@@ -64,6 +83,22 @@ public class ModelPeserta {
 
     public void setAlamat(String alamat) {
         this.alamat = alamat;
+    }
+
+    public LocalDate getTanggalLahir() {
+        return tanggalLahir;
+    }
+
+    public void setTanggalLahir(LocalDate tanggalLahir) {
+        this.tanggalLahir = tanggalLahir;
+    }
+
+    public Integer getUmur() {
+        return Period.between(tanggalLahir, LocalDate.now()).getYears();
+    }
+
+    public void setUmur(Integer umur) {
+        this.umur = umur;
     }
 }
 
