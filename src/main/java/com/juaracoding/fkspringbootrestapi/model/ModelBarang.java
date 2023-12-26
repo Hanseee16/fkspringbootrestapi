@@ -10,6 +10,7 @@ Version 1.0
 */
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "MstBarang")
@@ -24,6 +25,9 @@ public class ModelBarang {
     @ManyToOne
     @JoinColumn(name = "IDKategoriBarang", foreignKey = @ForeignKey(name = "fkBarangToKategori1"))
     private ModelKategoriBarang modelKategoriBarang;
+
+    @ManyToMany(mappedBy = "modelBarangList")
+    private List<ModelSupplier> modelSupplierList;
 
     public Long getId() {
         return id;
@@ -47,5 +51,13 @@ public class ModelBarang {
 
     public void setModelKategoriBarang(ModelKategoriBarang modelKategoriBarang) {
         this.modelKategoriBarang = modelKategoriBarang;
+    }
+
+    public List<ModelSupplier> getModelSupplierList() {
+        return modelSupplierList;
+    }
+
+    public void setModelSupplierList(List<ModelSupplier> modelSupplierList) {
+        this.modelSupplierList = modelSupplierList;
     }
 }
